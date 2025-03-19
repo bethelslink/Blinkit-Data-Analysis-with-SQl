@@ -81,6 +81,14 @@ SET Item_Fat_Content =
         ELSE Item_Fat_Content  
     END;
 ```
+
+
+```sql
+Copy code
+SELECT DISTINCT Item_Fat_Content FROM blinkit_data;
+```
+![Data Cleaning](data%20cleaning.png)
+
 ## Explanation:
 Purpose: Standardizes different labels for the same fat content category.
 How it Works:
@@ -88,12 +96,6 @@ How it Works:
 "reg" is converted to "Regular".
 Other values remain unchanged.
 To verify changes:
-
-```sql
-Copy code
-SELECT DISTINCT Item_Fat_Content FROM blinkit_data;
-```
-![Data Cleaning](data%20cleaning.png)
 
 
 Purpose: Checks if the cleaning was applied correctly.
