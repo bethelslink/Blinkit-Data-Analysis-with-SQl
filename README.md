@@ -18,7 +18,7 @@
     
 
 ## Project Overview  
-The **Blinkit Data Analysis** project focuses on analyzing sales data to uncover key insights related to item fat content, outlet locations, sales distribution, and business performance. This project involves **data cleaning, transformation, and visualization** using **SQL**.  
+The **Blinkit Data Analysis** project focuses on analyzing sales data to uncover key insights related to item fat content, outlet locations, sales distribution, and business performance. This project involves **data cleaning, transformation** using **SQL**.  
 
 ## How to Load the Data 
 To analyze the BlinkIT Grocery Data using PostgreSQL in pgAdmin, follow these steps:
@@ -52,7 +52,8 @@ CREATE TABLE blinkit_data (
 This creates a table with the same column names as in your CSV file.
  Import the CSV File into pgAdmin
 Using pgAdmin UI
-Right-click the blinkit_data table → Import/Export Data.
+Right-click the blinkit_data table 
+Import/Export Data.
 Choose Import.
 Select the CSV file (BlinkIT Grocery Data.csv).
 Set Delimiter to , (comma).
