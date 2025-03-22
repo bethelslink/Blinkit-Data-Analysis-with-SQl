@@ -32,7 +32,6 @@ Name it blinkit_db and click Save.
 Create a Table for the Data
 Before importing the CSV file, create a table that matches the dataset structure.
 ```sql
-Copy code
 CREATE TABLE blinkit_data (
     Item_Identifier VARCHAR(50),
     Item_Weight DECIMAL(10,2),
@@ -85,7 +84,6 @@ SET Item_Fat_Content =
 
 
 ```sql
-Copy code
 SELECT DISTINCT Item_Fat_Content FROM blinkit_data;
 ```
 ![Data Cleaning](data%20cleaning.png)
@@ -104,7 +102,6 @@ Purpose: Checks if the cleaning was applied correctly.
 ## Key Performance Indicators (KPIs)
 ## Total Sales
 ```sql
-Copy code
 SELECT CAST(SUM(Total_Sales) / 1000000.0 AS DECIMAL(10,2)) AS Total_Sales_Million  
 FROM blinkit_data;
 ```
@@ -119,7 +116,6 @@ CAST(... AS DECIMAL(10,2)): Converts the result to two decimal places.
 
 ## Average Sales
 ```sql
-Copy code
 SELECT CAST(AVG(Total_Sales) AS INT) AS Avg_Sales  
 FROM blinkit_data;
 ```
@@ -135,7 +131,6 @@ CAST(... AS INT): Rounds the result to an integer.
 
 ## Number of Items Sold
 ```sql
-Copy code
 SELECT COUNT(*) AS No_of_Orders  
 FROM blinkit_data;
 ```
@@ -148,7 +143,6 @@ COUNT(*): Counts all rows in the dataset.
 
 ## Average Rating
 ```sql
-Copy code
 SELECT CAST(AVG(Rating) AS DECIMAL(10,1)) AS Avg_Rating  
 FROM blinkit_data;
 ```
@@ -163,7 +157,6 @@ CAST(... AS DECIMAL(10,1)): Formats to one decimal place.
 ## Sales Analysis
 ## Total Sales by Fat Content
 ```sql
-Copy code
 SELECT Item_Fat_Content, CAST(SUM(Total_Sales) AS DECIMAL(10,2)) AS Total_Sales  
 FROM blinkit_data  
 GROUP BY Item_Fat_Content;
@@ -178,7 +171,6 @@ SUM(Total_Sales): Computes total sales for each category.
 
 ## Total Sales by Item Type
 ```sql
-Copy code
 SELECT Item_Type, CAST(SUM(Total_Sales) AS DECIMAL(10,2)) AS Total_Sales  
 FROM blinkit_data  
 GROUP BY Item_Type  
@@ -194,7 +186,6 @@ ORDER BY Total_Sales DESC: Sorts results in descending order.
 
 ## Fat Content by Outlet for Total Sales
 ```sql
-Copy code
 SELECT Outlet_Location_Type,  
        ISNULL([Low Fat], 0) AS Low_Fat,  
        ISNULL([Regular], 0) AS Regular  
@@ -227,7 +218,6 @@ The final result shows how different fat content products perform in each outlet
 
 ## Total Sales by Outlet Establishment Year
 ```sql
-Copy code
 SELECT Outlet_Establishment_Year, CAST(SUM(Total_Sales) AS DECIMAL(10,2)) AS Total_Sales  
 FROM blinkit_data  
 GROUP BY Outlet_Establishment_Year  
@@ -247,7 +237,6 @@ Business Insight: Helps understand whether newer outlets perform better than old
 
 ## Percentage of Sales by Outlet Size
 ```sql
-Copy code
 SELECT  
     Outlet_Size,  
     CAST(SUM(Total_Sales) AS DECIMAL(10,2)) AS Total_Sales,  
@@ -270,7 +259,6 @@ Business Insight: Helps identify which outlet size contributes the most to overa
 
 ## Sales by Outlet Location
 ```sql
-Copy code
 SELECT Outlet_Location_Type, CAST(SUM(Total_Sales) AS DECIMAL(10,2)) AS Total_Sales  
 FROM blinkit_data  
 GROUP BY Outlet_Location_Type  
@@ -290,7 +278,6 @@ Business Insight: Helps determine which locations perform best in sales.
 
 ## All Metrics by Outlet Type
 ```sql
-Copy code
 SELECT Outlet_Type,  
 CAST(SUM(Total_Sales) AS DECIMAL(10,2)) AS Total_Sales,  
 CAST(AVG(Total_Sales) AS DECIMAL(10,0)) AS Avg_Sales,  
